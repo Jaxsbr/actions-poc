@@ -1,0 +1,27 @@
+name: Github Actions Demo
+on: 
+  push:
+    branches: 
+    - main
+    paths-ignore: [.github/**]
+  pull_request:
+    branches: 
+    - main
+  schedule:
+    - cron: '15 6 * * 0'
+  workflow_run:
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo 😎 hi
+          echo ⭐ there
+
+      - uses: actions/checkout@v3.3.0
+
+      - name: List repo files
+        run: |
+          echo "files:"
+          tree
